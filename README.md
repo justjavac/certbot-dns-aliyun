@@ -12,7 +12,7 @@
 
 1. 安装 aliyun cli 工具
 
-   ```bash
+   ```shell
    wget https://aliyuncli.alicdn.com/aliyun-cli-linux-latest-amd64.tgz
    tar xzvf aliyun-cli-linux-latest-amd64.tgz
    sudo cp aliyun /usr/local/bin
@@ -22,7 +22,7 @@
 
 2. 安装 certbot-dns-aliyun 插件
 
-   ```bash
+   ```shell
    wget https://cdn.jsdelivr.net/gh/justjavac/certbot-dns-aliyun/alidns.sh
    sudo cp alidns.sh /usr/local/bin
    sudo ln -s /usr/local/bin/alidns.sh /usr/local/bin/alidns
@@ -32,19 +32,19 @@
 
    测试是否能正确申请：
 
-   ```bash
+   ```shell
    certbot certonly  -d *.example.com --manual --preferred-challenges dns --manual-auth-hook "alidns" --manual-cleanup-hook "alidns clean" --dry-run
    ```
 
    正式申请时去掉 `--dry-run` 参数：
 
-   ```bash
+   ```shell
    certbot certonly  -d *.example.com --manual --preferred-challenges dns --manual-auth-hook "alidns" --manual-cleanup-hook "alidns clean"
    ```
 
 4. 证书续期
 
-   ```bash
+   ```shell
    certbot renew --manual --preferred-challenges dns --manual-auth-hook "alidns" --manual-cleanup-hook "alidns clean" --dry-run
    ```
 

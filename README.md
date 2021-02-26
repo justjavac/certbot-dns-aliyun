@@ -32,19 +32,19 @@
 
    测试是否能正确申请：
 
-   ```shell
+   ```sh
    certbot certonly  -d *.example.com --manual --preferred-challenges dns --manual-auth-hook "alidns" --manual-cleanup-hook "alidns clean" --dry-run
    ```
 
    正式申请时去掉 `--dry-run` 参数：
 
-   ```shell
+   ```sh
    certbot certonly  -d *.example.com --manual --preferred-challenges dns --manual-auth-hook "alidns" --manual-cleanup-hook "alidns clean"
    ```
 
 4. 证书续期
 
-   ```shell
+   ```sh
    certbot renew --manual --preferred-challenges dns --manual-auth-hook "alidns" --manual-cleanup-hook "alidns clean" --dry-run
    ```
 
@@ -54,7 +54,7 @@
 
    添加定时任务 crontab。
 
-   ```bash
+   ```sh
    crontab -e
    ```
 

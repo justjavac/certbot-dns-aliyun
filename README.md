@@ -24,28 +24,28 @@
 
    ```bash
    wget https://cdn.jsdelivr.net/gh/justjavac/certbot-dns-aliyun/alidns.sh
+   sudo cp alidns.sh /usr/local/bin
+   sudo ln -s /usr/local/bin/alidns.sh /usr/local/bin/alidns
    ```
-
-   将脚本放到某个路径下面，例如 `/home/justjavac/alidns.sh`。
 
 3. 申请证书
 
    测试是否能正确申请：
 
    ```bash
-   certbot certonly  -d *.example.com --manual --preferred-challenges dns --manual-auth-hook "/home/justjavac/alidns.sh" --manual-cleanup-hook "/home/justjavac/alidns.sh clean" --dry-run
+   certbot certonly  -d *.example.com --manual --preferred-challenges dns --manual-auth-hook "alidns" --manual-cleanup-hook "alidns clean" --dry-run
    ```
 
    正式申请时去掉 `--dry-run` 参数：
 
    ```bash
-   certbot certonly  -d *.example.com --manual --preferred-challenges dns --manual-auth-hook "/home/justjavac/alidns.sh" --manual-cleanup-hook "/home/justjavac/alidns.sh clean"
+   certbot certonly  -d *.example.com --manual --preferred-challenges dns --manual-auth-hook "alidns" --manual-cleanup-hook "alidns clean"
    ```
 
 4. 证书续期
 
    ```bash
-   certbot renew --manual --preferred-challenges dns --manual-auth-hook "/home/justjavac/alidns.sh" --manual-cleanup-hook "/home/justjavac/alidns.sh clean" --dry-run
+   certbot renew --manual --preferred-challenges dns --manual-auth-hook "alidns" --manual-cleanup-hook "alidns clean" --dry-run
    ```
 
    如果以上命令没有错误，把 `--dry-run` 参数去掉。
@@ -61,7 +61,7 @@
    输入
 
    ```txt
-   1 1 */1 * * root certbot renew --manual --preferred-challenges dns --manual-auth-hook "/home/justjavac/alidns.sh" --manual-cleanup-hook "/home/justjavac/alidns.sh clean" --deploy-hook "nginx -s reload"
+   1 1 */1 * * root certbot renew --manual --preferred-challenges dns --manual-auth-hook "alidns" --manual-cleanup-hook "alidns clean" --deploy-hook "nginx -s reload"
    ```
 
    上面脚本中的 `--deploy-hook "nginx -s reload"` 表示在续期成功后自动重启 nginx。

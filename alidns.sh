@@ -5,17 +5,26 @@ if ! command -v aliyun >/dev/null; then
 	exit 1
 fi
 
+DOMAIN=$(expr match "$CERTBOT_DOMAIN" '.*\.\(.*\..*\)')
+SUB_DOMAIN=$(expr match "$CERTBOT_DOMAIN" '\(.*\)\..*\..*')
+if [ -z $DOMAIN ]; then
+    DOMAIN=$CERTBOT_DOMAIN
+fi
+if [ ! -z $SUB_DOMAIN ]; then
+    SUB_DOMAIN=.$SUB_DOMAIN
+fi
+
 if [ $# -eq 0 ]; then
 	aliyun alidns AddDomainRecord \
-		--DomainName $CERTBOT_DOMAIN \
-		--RR "_acme-challenge" \
+		--DomainName $DOMAIN \
+		--RR "_acme-challenge"$SUB_DOMAIN \
 		--Type "TXT" \
 		--Value $CERTBOT_VALIDATION
 	/bin/sleep 20
 else
 	RecordId=$(aliyun alidns DescribeDomainRecords \
-		--DomainName $CERTBOT_DOMAIN \
-		--RRKeyWord "_acme-challenge" \
+		--DomainName $DOMAIN \
+		--RRKeyWord "_acme-challenge"$SUB_DOMAIN \
 		--Type "TXT" \
 		--ValueKeyWord $CERTBOT_VALIDATION \
 		| grep "RecordId" \

@@ -16,6 +16,7 @@
    wget https://aliyuncli.alicdn.com/aliyun-cli-linux-latest-amd64.tgz
    tar xzvf aliyun-cli-linux-latest-amd64.tgz
    sudo cp aliyun /usr/local/bin
+   rm aliyun
    ```
 
    安装完成后需要配置[凭证信息](https://help.aliyun.com/document_detail/110341.html)
@@ -27,6 +28,7 @@
    sudo cp alidns.sh /usr/local/bin
    sudo chmod +x /usr/local/bin/alidns.sh
    sudo ln -s /usr/local/bin/alidns.sh /usr/local/bin/alidns
+   rm alidns.sh
    ```
 
 3. 申请证书

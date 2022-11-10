@@ -34,13 +34,13 @@
    测试是否能正确申请：
 
    ```sh
-   certbot certonly  -d *.example.com --manual --preferred-challenges dns --manual-auth-hook "alidns" --manual-cleanup-hook "alidns clean" --dry-run
+   certbot certonly -d *.example.com --manual --preferred-challenges dns --manual-auth-hook "alidns" --manual-cleanup-hook "alidns clean" --dry-run
    ```
 
    正式申请时去掉 `--dry-run` 参数：
 
    ```sh
-   certbot certonly  -d *.example.com --manual --preferred-challenges dns --manual-auth-hook "alidns" --manual-cleanup-hook "alidns clean"
+   certbot certonly -d *.example.com --manual --preferred-challenges dns --manual-auth-hook "alidns" --manual-cleanup-hook "alidns clean"
    ```
 
 4. 证书续期

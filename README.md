@@ -24,7 +24,7 @@
 2. 安装 certbot-dns-aliyun 插件
 
    ```shell
-   wget https://cdn.jsdelivr.net/gh/justjavac/certbot-dns-aliyun/alidns.sh
+   wget https://cdn.jsdelivr.net/gh/justjavac/certbot-dns-aliyun@main/alidns.sh
    sudo cp alidns.sh /usr/local/bin
    sudo chmod +x /usr/local/bin/alidns.sh
    sudo ln -s /usr/local/bin/alidns.sh /usr/local/bin/alidns

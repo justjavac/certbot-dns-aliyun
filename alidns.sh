@@ -1,5 +1,5 @@
 #!/bin/bash
-FLAG=".com.cn|.gov.cn|.net.cn|.org.cn|.ac.cn|.gd.cn"  
+FLAG="(\.com\.cn|\.gov\.cn|\.net\.cn|\.org\.cn|\.ac\.cn|\.gd\.cn)$"
 
 
 if ! command -v aliyun >/dev/null; then

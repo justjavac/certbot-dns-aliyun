@@ -10,7 +10,7 @@ fi
 DOMAIN=$(expr match "$CERTBOT_DOMAIN" '.*\.\(.*\..*\)')
 SUB_DOMAIN=$(expr match "$CERTBOT_DOMAIN" '\(.*\)\..*\..*')
 
-if echo $CERTBOT_DOMAIN |egrep -q "$FLAG"; then
+if echo $CERTBOT_DOMAIN |grep -E -q "$FLAG"; then
 
   DOMAIN=`echo $CERTBOT_DOMAIN |grep -oP '(?<=)[^.]+('$FLAG')'`
   SUB_DOMAIN=`echo $CERTBOT_DOMAIN |grep -oP '.*(?=\.[^.]+('$FLAG'))'`

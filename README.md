@@ -90,13 +90,13 @@
 3. 运行容器
    ```sh
    docker run \
-  -e REGION=YOUR_REGEION \
-  -e ACCESS_KEY_ID=YOUR_ACCESS_KEY \
-  -e ACCESS_KEY_SECRET=YOUR_ACCESS_SECRET \
-  -e DOMAIN=YOUR_DOMAIN \
-  -e EMAIL=YOUR_NOTIFICATION_EMAIL \   // 证书刷新通知邮箱
-  -e CRON_SCHEDULE="0 0 * * *" \   // 自定义证书刷新间隔
-  -v /path/to/your_certs:/etc/letsencrypt/certs \ 
-  -d certbot-alicli
+   -e REGION=YOUR_REGEION \
+   -e ACCESS_KEY_ID=YOUR_ACCESS_KEY \
+   -e ACCESS_KEY_SECRET=YOUR_ACCESS_SECRET \
+   -e DOMAIN=YOUR_DOMAIN \
+   -e EMAIL=YOUR_NOTIFICATION_EMAIL \   // 证书刷新通知邮箱
+   -e CRON_SCHEDULE="0 0 * * *" \   // 自定义证书刷新间隔
+   -v /path/to/your_certs:/etc/letsencrypt/certs \ 
+   -d certbot-alicli
    ```
    

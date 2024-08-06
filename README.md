@@ -8,7 +8,7 @@
 
 好在 certbot 提供了一个 hook，可以编写一个 Shell 脚本。在续期的时候让脚本调用 DNS 服务商的 API 接口动态添加 TXT 记录，验证完成后再删除此记录。
 
-## 安装
+## 安装(CommandLine)
 
 1. 安装 aliyun cli 工具
 
@@ -68,3 +68,35 @@
    ```
 
    上面脚本中的 `--deploy-hook "nginx -s reload"` 表示在续期成功后自动重启 nginx。
+   
+## 安装（Dockerfile）
+
+   下载Dockerfile以及entrypoint.sh,确保他们在同一文件夹下。目前Dockerfile中默认下载amd64版本，其他架构请修改对应的Aliyun CLI URL。
+   
+1. 创建Image
+   
+   进入Dockerfile同目录:
+   ```sh
+   docker build -t certbot-alicli .
+   ```
+
+   使用代理（可选）:
+   ```sh
+   docker build . \
+    --build-arg "HTTP_PROXY=http://127.0.0.1:7890" \
+    --build-arg "HTTPS_PROXY=http://127.0.0.1:7890" \
+    -t certbot-alicli
+   ```
+3. 运行容器
+   ```sh
+   docker run \
+   -e REGION=YOUR_REGEION \
+   -e ACCESS_KEY_ID=YOUR_ACCESS_KEY \
+   -e ACCESS_KEY_SECRET=YOUR_ACCESS_SECRET \
+   -e DOMAIN=YOUR_DOMAIN \
+   -e EMAIL=YOUR_NOTIFICATION_EMAIL \   // 证书刷新通知邮箱
+   -e CRON_SCHEDULE="0 0 * * *" \   // 自定义证书刷新间隔
+   -v /path/to/your_certs:/etc/letsencrypt/certs \ 
+   -d certbot-alicli
+   ```
+   

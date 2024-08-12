@@ -96,7 +96,6 @@
    -e DOMAIN=YOUR_DOMAIN \
    -e EMAIL=YOUR_NOTIFICATION_EMAIL \   // 证书刷新通知邮箱
    -e CRON_SCHEDULE="0 0 * * *" \   // 自定义证书刷新间隔
-   -v /path/to/your_certs:/etc/letsencrypt/certs \ 
+   -v /path/letsencrypt:/etc/letsencrypt \ // 将容器内的证书路径完整映射到宿主机
    -d certbot-alicli
    ```
-   

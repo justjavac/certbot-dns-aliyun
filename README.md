@@ -83,7 +83,7 @@ DNS 服务商的 API 接口动态添加 TXT 记录，验证完成后再删除此
 
    进入 Dockerfile 同目录:
    ```sh
-   docker build -t certbot-alicli .
+   docker build -t certbot-aliyun .
    ```
 
    使用代理（可选）:
@@ -91,7 +91,7 @@ DNS 服务商的 API 接口动态添加 TXT 记录，验证完成后再删除此
    docker build . \
     --build-arg "HTTP_PROXY=http://127.0.0.1:7890" \
     --build-arg "HTTPS_PROXY=http://127.0.0.1:7890" \
-    -t certbot-alicli
+    -t certbot-aliyun
    ```
 2. 运行容器
    ```sh
@@ -103,5 +103,5 @@ DNS 服务商的 API 接口动态添加 TXT 记录，验证完成后再删除此
    -e EMAIL=YOUR_NOTIFICATION_EMAIL \   // 证书刷新通知邮箱
    -e CRON_SCHEDULE="0 0 * * *" \   // 自定义证书刷新间隔
    -v /path/letsencrypt:/etc/letsencrypt \ // 将容器内的证书路径完整映射到宿主机
-   -d certbot-alicli
+   -d certbot-aliyun
    ```

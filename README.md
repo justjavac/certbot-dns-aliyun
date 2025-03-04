@@ -71,11 +71,11 @@
    
 ## 安装（Dockerfile）
 
-   下载Dockerfile以及entrypoint.sh,确保他们在同一文件夹下。目前Dockerfile中默认下载amd64版本，其他架构请修改对应的Aliyun CLI URL。
+   下载 Dockerfile 以及 entrypoint.sh, 确保他们在同一文件夹下。目前 Dockerfile 中默认下载 amd64 版本，其他架构请修改对应的 Aliyun CLI URL。
    
-1. 创建Image
+1. 创建 Image
    
-   进入Dockerfile同目录:
+   进入 Dockerfile 同目录:
    ```sh
    docker build -t certbot-alicli .
    ```

@@ -35,6 +35,9 @@ ENV DOMAIN=""
 ENV EMAIL=""
 ENV CRON_SCHEDULE="0 0 * * *"
 
+# Setup cron job for certbot renew
+RUN echo "$CRON_SCHEDULE /usr/bin/certbot renew --manual --preferred-challenges dns --manual-auth-hook '/usr/local/bin/alidns' --manual-cleanup-hook '/usr/local/bin/alidns clean' --agree-tos --email $EMAIL --deploy-hook 'cp -r /etc/letsencrypt/live/$DOMAIN/* /etc/letsencrypt/certs'" > /etc/crontabs/root
+
 # Create directory for certificates
 RUN mkdir -p /etc/letsencrypt/certs
 
